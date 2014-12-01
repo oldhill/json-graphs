@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS, including Bootstrap -->
-    <link href="static/css/rickshaw.css" rel="stylesheet" type="text/css">
-    <link href="static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/lib/rickshaw.css" rel="stylesheet" type="text/css">
+    <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
 
     <!-- TODO move this out of HEAD tag? -->
+    <script src="static/js/index.js"></script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script src="static/js/lib/d3.js"></script>
+    <script src="static/js/lib/rickshaw.js"></script>
+
 
     <!-- TODO add Google Analytics here -->
 
@@ -21,6 +27,26 @@
     <div id="intro">
       <h4> hi </h4>
     </div>
+
+    <div id = "chart"></div>
+    <script>
+      var graph = new Rickshaw.Graph( {
+          element: document.querySelector("#chart"),
+          width: 285,
+          height: 180,
+          series: [{
+              color: 'steelblue',
+              data: [
+                  { x: 0, y: 40 },
+                  { x: 1, y: 49 },
+                  { x: 2, y: 38 },
+                  { x: 3, y: 30 },
+                  { x: 4, y: 32 } ]
+          }]
+      });
+
+      graph.render();
+    </script>
 
   </body>
 </html>
