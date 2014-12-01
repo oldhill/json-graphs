@@ -9,7 +9,7 @@
     <link href="static/css/lib/rickshaw.css" rel="stylesheet" type="text/css">
     <link href="static/css/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-    <!-- TODO move this out of HEAD tag? -->
+    <!-- TODO move these js imports out of HEAD tag? -->
     <script src="static/js/index.js"></script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -17,35 +17,54 @@
     <script src="static/js/lib/d3.js"></script>
     <script src="static/js/lib/rickshaw.js"></script>
 
-
     <!-- TODO add Google Analytics here -->
-
   </head>
 
   <body>
+    <form id="submit-data">
+      <div>
+        <label for="json-data">Paste some json:</label>
+        <input type="text" id="json-data" placeholder="sample">
+      </div>
+      <div class="button">
+        <button type="submit">Go</button>
+      </div>
+    </form>
 
-    <div id="intro">
-      <h4> hi </h4>
+    <div id="chart">
+      <!-- graph is rendered here -->
     </div>
 
-    <div id = "chart"></div>
     <script>
-      var graph = new Rickshaw.Graph( {
-          element: document.querySelector("#chart"),
-          width: 285,
-          height: 180,
-          series: [{
-              color: 'steelblue',
-              data: [
-                  { x: 0, y: 40 },
-                  { x: 1, y: 49 },
-                  { x: 2, y: 38 },
-                  { x: 3, y: 30 },
-                  { x: 4, y: 32 } ]
-          }]
-      });
+      // TODO move this to separate js file :/
 
-      graph.render();
+      // Is this shorthand for document . onready?
+      $(function() {
+
+        $("#submit-data").submit(function( event ){
+          event.preventDefault();
+          var data = $("#json-data").val();
+          console.log(data);
+        });
+
+        // Hello world rickshaw example
+        var graph = new Rickshaw.Graph( {
+            element: document.querySelector("#chart"),
+            width: 285,
+            height: 180,
+            series: [{
+                color: 'steelblue',
+                data: [
+                    { x: 0, y: 40 },
+                    { x: 1, y: 49 },
+                    { x: 2, y: 38 },
+                    { x: 3, y: 30 },
+                    { x: 4, y: 32 } ]
+            }]
+        });
+        graph.render();
+
+      })
     </script>
 
   </body>
