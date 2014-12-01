@@ -1,4 +1,4 @@
-"""Recommends SoundCloud artists based on who an input artist follows
+""" Graph stuff
 """
 
 import os
