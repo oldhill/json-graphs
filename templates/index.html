@@ -38,31 +38,28 @@
     <script>
       // TODO move this to separate js file :/
 
-      // Is this shorthand for document . onready?
+      // Sample valid input: [{"x": 0, "y": 1}, {"x": 1, "y": 5}]
       $(function() {
 
         $("#submit-data").submit(function( event ){
           event.preventDefault();
-          var data = $("#json-data").val();
-          console.log(data);
-        });
 
-        // Hello world rickshaw example
-        var graph = new Rickshaw.Graph( {
-            element: document.querySelector("#chart"),
-            width: 285,
-            height: 180,
-            series: [{
-                color: 'steelblue',
-                data: [
-                    { x: 0, y: 40 },
-                    { x: 1, y: 49 },
-                    { x: 2, y: 38 },
-                    { x: 3, y: 30 },
-                    { x: 4, y: 32 } ]
-            }]
+          var string_data = $("#json-data").val();
+          var graph_data = JSON.parse(string_data);
+
+          // Modified rickshaw hello world example
+          var graph = new Rickshaw.Graph( {
+              element: document.querySelector("#chart"),
+              width: 285,
+              height: 180,
+              series: [{
+                  color: 'steelblue',
+                  data: graph_data
+              }]
+          });
+          graph.render();
+
         });
-        graph.render();
 
       })
     </script>
